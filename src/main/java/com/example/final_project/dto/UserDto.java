@@ -1,0 +1,19 @@
+package com.example.final_project.dto;
+
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
+
+@NoArgsConstructor
+@Component
+@Data
+public class UserDto {
+    private Long userNumber;
+    private String userId;
+    private String userPassword;
+    private String userGender;
+    private String userEmail;
+    private String userAddress;
+
+}
