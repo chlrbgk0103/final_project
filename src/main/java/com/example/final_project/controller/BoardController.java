@@ -2,10 +2,14 @@ package com.example.final_project.controller;
 
 
 import com.example.final_project.service.BoardService;
+import com.example.final_project.vo.BoardVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -14,17 +18,20 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @GetMapping("/boardList")
-    public String boardList(){
+    @GetMapping("/List")
+    public String boardList(Model model){
+        List<BoardVo> boardList = boardService.findAll();
+        model.addAttribute("boards", boardList);
+
         return "board/boardList";
     }
 
-    @GetMapping("/boardView")
+    @GetMapping("/View")
     public String boardView(){
         return "board/boardView";
     }
 
-    @GetMapping("/boardWrite")
+    @GetMapping("/Write")
     public String boardWrite(){
         return "board/boardWrite";
     }
